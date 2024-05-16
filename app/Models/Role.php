@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
-
-/*    public function getRouteKeyName()
-    {
-        return 'name';
-    }*/
-
     protected $fillable = ['name'];
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'role_id', 'id');
+    }
 }
