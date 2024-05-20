@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,11 +17,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
            RolesSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        //User::factory(5)->create();
+        //User::factory(1)->admin()->create();
+        //Ticket::factory()->create();
+        User::factory(1)->admin()->create();
+        User::factory(5)
+            ->client()
+            ->has(Ticket::factory()->count(3))
+            ->create();
     }
 }
