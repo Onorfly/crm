@@ -23,6 +23,6 @@ class MainController extends Controller
     }
 
     public function html () {
-        return response('current_string', 404);
+        return response('current_string', 200);
     }
 }
