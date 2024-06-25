@@ -3,23 +3,24 @@
 namespace Tests\Unit;
 
 use App\Models\Ticket;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class TicketTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
     /**
      * A basic unit test example.
      */
-    public function test_example(): void
+    public function test_example()
     {
         $this->assertTrue(true);
     }
 
     public function test_is_new()
     {
+        $this->seed();
+
         $ticket = Ticket::factory()->create([
             'status' => 0,
         ]);
@@ -28,6 +29,8 @@ class TicketTest extends TestCase
 
     public function test_is_not_new()
     {
+        $this->seed();
+
         $ticket = Ticket::factory()->create([
             'status' => 1,
         ]);

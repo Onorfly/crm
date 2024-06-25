@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ticket extends Model
+class Test extends Model
 {
     use HasFactory;
-
-    public function isNew()
-    {
-        return $this->status === 0;
-    }
 }

@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class RolesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function index()
+    {
+        return Role::get();
+    }
     public function create(Request $request)
     {
         return response()->json([$request->has('name')]);
@@ -15,29 +22,6 @@ class RolesController extends Controller
            'name' => 'manager',
         ]);*/
         return response()->json(true);
-    }
-
-    public function index()
-    {
-        /*return Role::all();*/
-        /*return Role::find(1);
-        /*Role::where('id', 1)->first();*/
-        /*dd(Role::whereNotNull('created_at')->orWhere('id', '>', 1)->get());*/
-        /*dd(Role::whereNotNull('created_at')->orWhere('id', '>', 1)->get());*/
-        /*return Role::where('created_at', '!=', null)->get();*/
-    /*    return response()->json(Role::get());*/
-        /*return Role::orderByDesc('id')->get();*/
-        /*$role = Role::find(3);
-        $role->name = 'Manager';
-        $role->save();*/
-
-        /*$role = Role::find(3)->update([
-            'name' => 'M',
-        ]);
-
-        return Role::find   (3);*/
-
-        Role::find(3)->delete();
     }
 
     public function show(Role $role)
